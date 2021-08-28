@@ -37,7 +37,7 @@ const DashboardDrawer: FC<{ handleDrawerToggle: () => void; drawerOpen: boolean 
       <Box as="h6">
         Events <FAIcon name="calendar-alt" className="ms-2" />
       </Box>
-      <NavLink to="/">Tie Conf</NavLink>
+      <NavLink to="/">TIE Conf 2021</NavLink>
       <Button onClick={handleSignout} color="secondary" variant="outlined" className="mt-auto">
         Sign out <FAIcon name="sign-out-alt" className="ms-2" />
       </Button>
