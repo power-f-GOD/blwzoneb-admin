@@ -329,7 +329,7 @@ div {
 
 .MuiDrawer-root {
   .MuiDrawer-paper {
-    padding: 0.25em 1em 1em;
+    padding: 0.25em 0.75em 0.75em;
   }
 
   a {
@@ -413,10 +413,6 @@ div {
   &.Mui-error {
     border-color: red;
   }
-}
-
-.MuiOutlinedInput-input {
-  // padding: 1em;
 }
 
 .MuiOutlinedInput-multiline {

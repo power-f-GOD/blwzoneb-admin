@@ -32,9 +32,10 @@ const DashboardAppBar: FC<{ handleDrawerToggle: () => void }> = ({ handleDrawerT
     } catch (e: any) {
       setSnackbar({
         open: true,
+        severity: 'error',
         message:
           'An error occurred!' +
-          (navigator.onLine
+          (!navigator.onLine
             ? " You're probably offline. Kindly check that you have an active internet connection."
             : '')
       });

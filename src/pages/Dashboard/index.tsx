@@ -33,12 +33,12 @@ const Dashboard = () => {
         .filter((key) => !/^_?(id|_v)/.test(key))
         .map((key) => ({
           width: /name|email/.test(key)
-            ? 600
+            ? 700
             : /date|chapter|designation/.test(key)
-            ? 500
-            : /phone/.test(key)
+            ? 650
+            : /phone|zone/.test(key)
             ? 400
-            : 350,
+            : 300,
           label: (key + `${key === 'date' ? ' Registered' : ''}`).replace('_', ' '),
           dataKey: key.toLowerCase(),
           numeric: false
@@ -82,8 +82,18 @@ const Dashboard = () => {
         <Box as="h5" className="mt-1 text-overflow-ellipsis">
           {searchData?.length
             ? `${searchData?.length} members have registered
-          ${searchQuery ? 'in "' + searchQuery + '"' : ''}`
+          `
             : `Found no data for "${searchQuery}"`}
+          {searchQuery && searchData?.length ? (
+            <>
+              in {' "'}
+              <Box as="span" className="text-uppercase">
+                {searchQuery + '"'}
+              </Box>
+            </>
+          ) : (
+            ''
+          )}
         </Box>
         <Box className="searching-indicator">Searching...</Box>
         <DashboardVirtualizedTable

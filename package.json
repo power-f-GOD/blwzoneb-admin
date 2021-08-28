@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "add": "git stash && git checkout dev && git stash apply && git add .",
     "merge:dev": "git stash && git checkout main && git pull origin main && git checkout dev && git merge main",
-    "push:dev": "npm run merge:dev && git pull && git push",
+    "push:dev": "yarn merge:dev && git pull && git push",
     "deploy": "git checkout main && git pull origin main && git merge dev && git push origin main && git checkout dev && git merge main"
   },
   "eslintConfig": {

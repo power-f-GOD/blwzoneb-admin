@@ -57,7 +57,7 @@ const Auth = () => {
         message: !navigator.onLine
           ? "You're offline."
           : /fetch|network|connect/i.test(e.message)
-          ? 'A network error occurred. Please, check that you have an active internet connection.'
+          ? "A network error occurred. You're probably offline. Kindly check that you are connected to the internet."
           : e.message
       });
       setAuth({ status: 'settled', err: true });
