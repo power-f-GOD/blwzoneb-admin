@@ -1,0 +1,75 @@
+@import './constants.scss';
+
+$app-width: 27em;
+$br: 0.625em;
+
+form {
+  & > .row {
+    width: $app-width;
+    max-width: 100vw;
+  }
+}
+
+.h1,
+.h2,
+.h4 {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.h1 {
+  color: white;
+}
+
+.text-field-container {
+  margin-bottom: 0.25em;
+  padding: 0 0.5em;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  font-size: 0.85em;
+  margin-top: 2em;
+  padding: 2em 1em 0.75em 1em;
+  opacity: 0.2;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.4;
+  }
+
+  button {
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      ~ .devs {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .devs {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+
+    a {
+      color: inherit;
+      margin: 0 0.5em;
+      font-weight: bold;
+      font-size: inherit;
+    }
+  }
+}

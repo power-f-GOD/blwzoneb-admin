@@ -1,0 +1,110 @@
+$drawer-width: 15em;
+$table-min-width: 100em;
+
+.Dashboard {
+  height: 100vh;
+
+  &__Drawer {
+    width: $drawer-width;
+    background-color: rgba(60, 60, 60, 1);
+  }
+
+  header {
+    width: 100vw;
+    background-color: transparent;
+  }
+
+  main {
+    top: 4.35em;
+    height: calc(100vh - 4.35em);
+    position: relative;
+    padding: 1.25em;
+    overflow: hidden;
+    background-color: rgb(50, 50, 50);
+
+    &.searching {
+      &::before,
+      .searching-indicator {
+        pointer-events: unset;
+        opacity: 1;
+      }
+    }
+
+    &::before,
+    .searching-indicator {
+      @extend .before-or-after;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+      backdrop-filter: unset;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .searching-indicator {
+      z-index: 2;
+      display: flex;
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+  }
+
+  .VirtualizedTableWrapper {
+    height: 100%;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    max-height: calc(100% - 2.5em);
+    background: rgb(35, 35, 35);
+
+    * {
+      color: white;
+    }
+  }
+
+  &__VirtualizedTable {
+    width: auto !important;
+    min-width: $table-min-width;
+  }
+
+  .ReactVirtualized__Grid,
+  .ReactVirtualized__Grid__innerScrollContainer {
+    width: 100% !important;
+    max-width: unset !important;
+  }
+
+  .ReactVirtualized__Table__headerRow {
+    text-transform: capitalize;
+    width: 100% !important;
+    border-bottom: 0.125em solid rgba(255, 255, 255, 0.1);
+  }
+
+  .ReactVirtualized__Table__row {
+    width: 100% !important;
+    border-bottom: 0.0625em solid rgba(255, 255, 255, 0.075);
+  }
+
+  .ReactVirtualized__Table__rowColumn {
+    width: 100% !important;
+    display: table-cell !important;
+  }
+
+  .MuiOutlinedInput-inputMarginDense {
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+  }
+
+  @media screen and (min-width: 768px) {
+    header {
+      width: calc(100vw - #{$drawer-width});
+      left: $drawer-width;
+    }
+
+    main {
+      top: 4em;
+      height: calc(100vh - 4em);
+      left: $drawer-width;
+      width: calc(100vw - #{$drawer-width});
+    }
+  }
+}
