@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 import { AuthContext, SearchContext } from 'src/App.Contexts';
 import { Box } from 'src/components';
+import { ColumnData } from 'src/types';
 import { Http } from 'src/utils';
 import DashboardAppBar from './AppBar';
 import DashboardDrawer from './Drawer';
@@ -27,25 +28,51 @@ const Dashboard = () => {
     setDrawerOpen(!drawerOpen);
   }, [drawerOpen]);
 
-  const tableColumns = useMemo(
-    () =>
-      Object.keys(searchData![0] || {})
-        .filter((key) => !/^_?(id|_v)/.test(key))
-        .map((key) => ({
-          width: /name|email/.test(key)
-            ? 700
-            : /date|chapter|designation/.test(key)
-            ? 650
-            : /phone|zone/.test(key)
-            ? 400
-            : 300,
-          label: (key + `${key === 'date' ? ' Registered' : ''}`).replace('_', ' '),
-          dataKey: key.toLowerCase(),
-          numeric: false
-        })),
-    // eslint-disable-next-line
-    [searchData?.length]
-  );
+  const tableColumns: ColumnData[] = [];
+
+  Object.keys(searchData![0] || {})
+    .filter((key) => !/^_?(id|_v)/.test(key))
+    .map((key) => {
+      const data = {
+        width: /name|email/.test(key)
+          ? 700
+          : /date|chapter|designation/.test(key)
+          ? 650
+          : /phone|zone/.test(key)
+          ? 400
+          : 300,
+        label: (key + `${key === 'date' ? ' Registered' : ''}`).replace('_', ' '),
+        dataKey: key.toLowerCase(),
+        numeric: false
+      };
+
+      switch (true) {
+        case /^title/.test(data.label):
+          tableColumns[0] = data;
+          break;
+        case /^full/.test(data.label):
+          tableColumns[1] = data;
+          break;
+        case /^designation/.test(data.label):
+          tableColumns[2] = data;
+          break;
+        case /^chapter/.test(data.label):
+          tableColumns[3] = data;
+          break;
+        case /^zone/.test(data.label):
+          tableColumns[4] = data;
+          break;
+        case /^phone/.test(data.label):
+          tableColumns[5] = data;
+          break;
+        case /^email/.test(data.label):
+          tableColumns[6] = data;
+          break;
+        default:
+          tableColumns.push(data);
+          break;
+      }
+    });
 
   const rowGetter = useCallback(
     ({ index }) => {

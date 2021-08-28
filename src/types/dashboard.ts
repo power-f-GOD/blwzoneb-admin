@@ -17,3 +17,24 @@ export interface SearchProps extends HttpStatusProps {
   data?: APIRegistrantsResponseModel[];
   query?: string;
 }
+
+interface Row {
+  index: number;
+}
+
+export interface ColumnData {
+  dataKey: string;
+  label: string;
+  numeric?: boolean;
+  width: number;
+}
+
+export interface DashboardVirtualizedTableProps {
+  columns: ColumnData[];
+  // headerHeight?: number;
+  onRowClick?: () => void;
+  rowCount: number;
+  rowGetter: (row: Row) => APIRegistrantsResponseModel;
+  // rowHeight?: number;
+  // search: SearchProps;
+}

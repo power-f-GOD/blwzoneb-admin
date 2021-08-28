@@ -3,28 +3,7 @@ import { TableCell, Paper } from '@material-ui/core';
 import { FC, memo, useCallback } from 'react';
 import { AutoSizer, Column, Table, TableCellRenderer, TableHeaderProps } from 'react-virtualized';
 
-import { APIRegistrantsResponseModel } from 'src/types';
-
-interface Row {
-  index: number;
-}
-
-interface ColumnData {
-  dataKey: string;
-  label: string;
-  numeric?: boolean;
-  width: number;
-}
-
-interface DashboardVirtualizedTableProps {
-  columns: ColumnData[];
-  // headerHeight?: number;
-  onRowClick?: () => void;
-  rowCount: number;
-  rowGetter: (row: Row) => APIRegistrantsResponseModel;
-  // rowHeight?: number;
-  // search: SearchProps;
-}
+import { DashboardVirtualizedTableProps } from 'src/types';
 
 const headerHeight = 48;
 const rowHeight = 48;
