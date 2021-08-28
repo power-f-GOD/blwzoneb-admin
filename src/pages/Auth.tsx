@@ -42,7 +42,7 @@ const Auth = () => {
       setSnackbar({
         severity: data ? 'success' : 'info',
         open: true,
-        message: data ? 'Welcome, Highly Esteemed!' : message
+        message: data ? 'Welcome, Highly Esteemed! 🙌🏼🙇🏽‍♂️' : message
       });
       setAuth({ err: !data, status: 'fulfilled', statusText: message, authenticated: !!data });
 

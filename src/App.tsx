@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Dashboard from 'src/pages/Dashboard';
@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Dashboard} />
-        <Route path="/auth" component={Auth} />
+        <Route path={useMemo(() => ['/', '/*'], [])} component={Auth} />
       </Switch>
       <AppSnackbar />
     </BrowserRouter>

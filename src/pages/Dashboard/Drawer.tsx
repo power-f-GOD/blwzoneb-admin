@@ -28,7 +28,7 @@ const DashboardDrawer: FC<{ handleDrawerToggle: () => void; drawerOpen: boolean 
     setSnackbar({
       severity: 'info',
       open: true,
-      message: 'Have a wonderful day!'
+      message: 'Have a wonderful day! 😎✌🏼'
     });
   }, [setAuth, setSnackbar]);
 

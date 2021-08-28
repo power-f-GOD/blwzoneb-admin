@@ -33,7 +33,10 @@ const DashboardAppBar: FC<{ handleDrawerToggle: () => void }> = ({ handleDrawerT
       setSnackbar({
         open: true,
         message:
-          e?.message || 'An error occurred!' + navigator.onLine ? " You're probably offline." : ''
+          'An error occurred!' +
+          (navigator.onLine
+            ? " You're probably offline. Kindly check that you have an active internet connection."
+            : '')
       });
       setSearch({ status: 'settled', err: true });
     }
