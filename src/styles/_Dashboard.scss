@@ -4,10 +4,6 @@ $table-min-width: 100em;
 .Dashboard {
   height: 100vh;
 
-  nav {
-    // width: $drawer-width;
-  }
-
   &__Drawer {
     width: $drawer-width;
     background-color: rgba(60, 60, 60, 1);
