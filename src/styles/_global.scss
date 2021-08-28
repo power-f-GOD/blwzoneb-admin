@@ -16,6 +16,7 @@ html,
 body {
   width: 100%;
   margin: 0;
+  height: 100%;
   font-weight: 400;
 
   @media screen and (max-width: 359px) {
@@ -59,8 +60,9 @@ body {
   max-width: 100vw;
 
   &,
-  > main {
+  .App {
     overflow-x: hidden;
+    height: 100%;
     @extend .anim__fadeIn;
   }
 
