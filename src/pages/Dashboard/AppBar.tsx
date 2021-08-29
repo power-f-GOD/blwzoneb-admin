@@ -27,7 +27,15 @@ const DashboardAppBar: FC<{ handleDrawerToggle: () => void }> = ({ handleDrawerT
       );
 
       if (data) {
+        const cachedData = JSON.parse(
+          localStorage.getItem('registrants') || '[]'
+        ) as SearchProps['data'];
+
         setSearch({ data, query: searchQuery, status: 'fulfilled' });
+
+        if (data.length > (cachedData?.length || 0)) {
+          localStorage.setItem('registrants', JSON.stringify(data));
+        }
       }
     } catch (e: any) {
       setSnackbar({
