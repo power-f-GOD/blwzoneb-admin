@@ -28,7 +28,14 @@ const Dashboard = () => {
     setDrawerOpen(!drawerOpen);
   }, [drawerOpen]);
 
-  const tableColumns: ColumnData[] = [];
+  const tableColumns: ColumnData[] = [
+    {
+      width: 175,
+      label: 'S/N',
+      dataKey: 'index',
+      numeric: true
+    }
+  ];
 
   Object.keys(searchData![0] || {})
     .filter((key) => !/^_?(id|_v)/.test(key))
@@ -48,25 +55,25 @@ const Dashboard = () => {
 
       switch (true) {
         case /^title/.test(data.label):
-          tableColumns[0] = data;
-          break;
-        case /^full/.test(data.label):
           tableColumns[1] = data;
           break;
-        case /^designation/.test(data.label):
+        case /^full/.test(data.label):
           tableColumns[2] = data;
           break;
-        case /^chapter/.test(data.label):
+        case /^designation/.test(data.label):
           tableColumns[3] = data;
           break;
-        case /^zone/.test(data.label):
+        case /^chapter/.test(data.label):
           tableColumns[4] = data;
           break;
-        case /^phone/.test(data.label):
+        case /^zone/.test(data.label):
           tableColumns[5] = data;
           break;
-        case /^email/.test(data.label):
+        case /^phone/.test(data.label):
           tableColumns[6] = data;
+          break;
+        case /^email/.test(data.label):
+          tableColumns[7] = data;
           break;
         default:
           tableColumns.push(data);
@@ -78,6 +85,7 @@ const Dashboard = () => {
     ({ index }) => {
       return {
         ...(searchData![index] || {}),
+        index: Math.abs((searchData?.length || 0) - index),
         date:
           new Date(searchData?.[index].date || 0).toDateString() +
           ' @ ' +
